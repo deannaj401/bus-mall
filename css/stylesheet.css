@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: blue;
+}
+
+header {
+    background-color: lightblue;
+    height: 100px;
+    width: 100%;
+    padding: 0px;
+}
+
+h1 {
+    font-family: cursive;
+    color: darkblue;
+    text-align: center;
+    vertical-align: center;
+}
+
+
+
+.survey {
+    font-family: cursive;
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+    padding: 0px;
+
+}
+
+img {
+    border: 10px solid darkblue;
+    margin-left: 200px;
+    margin-top: 250px;
+    height: 300px;
+    width: 300px;
+    padding: 0px;
+}
+
+.results {
+   
+    margin-left: 0;
+    padding: 0px;
+    height: 1000px;
+    width: 300px;
+    float: left;
+    border: 10px solid darkblue;
+    background-color: lightblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif 
+    
+}
+
+#footer {
+    background-color: lightblue;
+    height: 75px;
+    width: 100%;
+    margin-bottom: 0px;
+    padding: 0px;
+}
