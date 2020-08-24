@@ -8,6 +8,9 @@ var imgArray = [];
 var imgElOne = document.getElementById('image-one');
 var imgElTwo = document.getElementById('image-two');
 var imgElThree = document.getElementById('image-three');
+var resultTable = document.getElementById('resultTable');
+var clickyClick = 0;
+var maxRounds = 25;
 
 
 function Picture(name, src) {
@@ -56,7 +59,8 @@ function renderImages() {
   var imgThree = imgArray[randomNumber(imgArray.length)];
 
 
-  while (imgOne === imgTwo === imgThree) {
+  while (imgOne === imgTwo || imgOne === imgThree || imgTwo === imgThree) {
+    imgOne = imgArray[randomNumber(imgArray.length)];
     imgTwo = imgArray[randomNumber(imgArray.length)];
     imgThree = imgArray[randomNumber(imgArray.length)];
 
@@ -88,22 +92,78 @@ function randomNumber(max) {
 }
 
 function handleClick(e) {
-  //mouseData target alt src
 
-  console.log(e.target.alt);
+  if (clickyClick < maxRounds) {
+    for (var i = 0; i < imgArray.length; i++) {
+      if (imgArray[i].name === e.target.alt) {
+        console.log(imgArray[i]);
+        imgArray[i].clicked++;
+        clickyClick++;
+      }
+    }
+    renderImages();
+  }
+  if (clickyClick === maxRounds ) {
+    alert('Thank you for voting. Have a lovely Day');
+    generateResults();
+    console.log(e.target.clicked);
+  }
+}
+
+
+
+renderImages();
+
+
+
+
+
+
+function generateResults() {
+  var trHeader = document.createElement('tr');
+  var thName = document.createElement('th');
+  thName.textContent = 'Name';
+  trHeader.appendChild(thName);
+
+  var thViews = document.createElement('th');
+  thViews.textContent = 'Views';
+  trHeader.appendChild(thViews);
+
+  var thClicks = document.createElement('th');
+  thClicks.textContent = 'Clicked';
+  trHeader.appendChild(thClicks);
+
+  resultTable.appendChild(trHeader);
+
 
   for (var i = 0; i < imgArray.length; i++) {
-    if (imgArray[i].name === e.target.alt) {
-      imgArray[i].clicked++;
-      renderImages();
-    }
+
+    var trProduct = document.createElement('tr');
+    var tdName = document.createElement('td');
+    tdName.textContent = `${imgArray[i].name}`;
+    trProduct.appendChild(tdName);
+
+    var tdViews = document.createElement('td');
+    tdViews.textContent = `${imgArray[i].viewed}`;
+    trProduct.appendChild(tdViews);
+
+    var tdClicked = document.createElement('td');
+    tdClicked.textContent = `${imgArray[i].clicked}`;
+    trProduct.appendChild(tdClicked);
+
+    resultTable.appendChild(trProduct);
+
+
+
   }
 
 }
 
 
-renderImages();
+
+
 
 imgElOne.addEventListener('click', handleClick);
 imgElTwo.addEventListener('click', handleClick);
 imgElThree.addEventListener('click', handleClick);
+resultTable.addEventListener('click', handleClick);
