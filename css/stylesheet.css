@@ -17,7 +17,7 @@ h1 {
     font-family: cursive;
     color: darkblue;
     text-align: center;
-    vertical-align: center;
+    font-size: xx-large;
 }
 
 
@@ -53,10 +53,17 @@ img {
     
 }
 
-#footer {
+.footer {
     background-color: lightblue;
     height: 75px;
     width: 100%;
     margin-bottom: 0px;
     padding: 0px;
 }
+
+/* .footer img {
+    height: 400px;
+    width: 300px;
+
+
+} */
