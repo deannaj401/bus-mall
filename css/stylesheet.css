@@ -61,9 +61,7 @@ img {
     padding: 0px;
 }
 
-/* .footer img {
-    height: 400px;
-    width: 300px;
-
-
-} */
+canvas {
+    background-color: white;
+    align: center;
+}
