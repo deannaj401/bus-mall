@@ -3,31 +3,32 @@
 }
 
 body {
-    background-color: blue;
+    background-color:lightcyan;
 }
 
 header {
-    background-color: lightblue;
+    background-color: white;
     height: 100px;
     width: 100%;
     padding: 0px;
 }
 
 h1 {
-    font-family: cursive;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color: darkblue;
     text-align: center;
-    font-size: xx-large;
+    font-size: 80px;
 }
 
 
 
 .survey {
     font-family: cursive;
-    color: white;
+    color: darkblue;
     text-align: center;
     margin-top: 150px;
     padding: 0px;
+    border: 3px solid darkblue;
 
 }
 
@@ -61,9 +62,25 @@ img {
     padding: 0px;
 }
 
-/* .footer img {
-    height: 400px;
-    width: 300px;
 
 
-} */
+hr {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr:after {
+    content: "BUS MALL MARKETING";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    color: blue;
+    padding: 0 0.25em;
+    background: white;
+}
+/* got hr style off of css-tricks.com
+glyph by Harry Roberts */

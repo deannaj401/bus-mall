@@ -51,6 +51,7 @@ new Picture('wine-glass', './img/wine-glass.jpg');
 
 
 
+
 function renderImages() {
   //DOM manipulation 1. fill element with content
 
@@ -103,63 +104,212 @@ function handleClick(e) {
     }
     renderImages();
   }
-  if (clickyClick === maxRounds ) {
+  if (clickyClick === maxRounds) {
     alert('Thank you for voting. Have a lovely Day');
-    generateResults();
+    renderBarChart();
     console.log(e.target.clicked);
   }
 }
 
 
 
-renderImages();
 
-
-
-
-
-
-function generateResults() {
-  var trHeader = document.createElement('tr');
-  var thName = document.createElement('th');
-  thName.textContent = 'Name';
-  trHeader.appendChild(thName);
-
-  var thViews = document.createElement('th');
-  thViews.textContent = 'Views';
-  trHeader.appendChild(thViews);
-
-  var thClicks = document.createElement('th');
-  thClicks.textContent = 'Clicked';
-  trHeader.appendChild(thClicks);
-
-  resultTable.appendChild(trHeader);
-
+Chart.defaults.global.defaultFontFamily = "cursive";//eslint-disable-line
+Chart.defaults.global.defaultFontColor = 'rgb(30,144,255)';//eslint-disable-line
+Chart.defaults.scale.gridLines.color = 'rgb(153, 102, 255)'; //eslint-disable-line
+function renderBarChart() {
+  var clicksArray = [];
+  var viewedArray = [];
+  var productArray = [];
 
   for (var i = 0; i < imgArray.length; i++) {
-
-    var trProduct = document.createElement('tr');
-    var tdName = document.createElement('td');
-    tdName.textContent = `${imgArray[i].name}`;
-    trProduct.appendChild(tdName);
-
-    var tdViews = document.createElement('td');
-    tdViews.textContent = `${imgArray[i].viewed}`;
-    trProduct.appendChild(tdViews);
-
-    var tdClicked = document.createElement('td');
-    tdClicked.textContent = `${imgArray[i].clicked}`;
-    trProduct.appendChild(tdClicked);
-
-    resultTable.appendChild(trProduct);
-
-
+    clicksArray.push(imgArray[i].clicked);
+    viewedArray.push(imgArray[i].viewed);
+    productArray.push(imgArray[i].name);
 
   }
 
+
+  var chartObject = {
+
+    type: 'bar',
+    data: {
+      labels: productArray,
+      datasets: [{
+        label: 'Times Clicked',
+        data: clicksArray,
+        backgroundColor: [
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 206, 86, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)'
+        ],
+        hoverBackgroundColor: 'green',
+        borderWidth: 1
+
+      }, {
+        label: 'Times Viewed',
+        data: viewedArray,
+        backgroundColor: [
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(153, 102, 255, 1)'
+
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)'
+        ],
+        hoverBackgroundColor: 'yellow',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Voting Results',
+        fontFamily: 'cursive',
+        fontSize: '30',
+        fontColor: 'purple',
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      },
+      responsive: false,
+    }
+  };
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  var myChart = new Chart(ctx, chartObject);//eslint-disable-line
+
+
 }
 
+// function generateResults() {
+//   var trHeader = document.createElement('tr');
+//   var thName = document.createElement('th');
+//   thName.textContent = 'Name';
+//   trHeader.appendChild(thName);
 
+//   var thViews = document.createElement('th');
+//   thViews.textContent = 'Views';
+//   trHeader.appendChild(thViews);
+
+//   var thClicks = document.createElement('th');
+//   thClicks.textContent = 'Clicked';
+//   trHeader.appendChild(thClicks);
+
+//   resultTable.appendChild(trHeader);
+
+
+//   for (var i = 0; i < imgArray.length; i++) {
+
+//     var trProduct = document.createElement('tr');
+//     var tdName = document.createElement('td');
+//     tdName.textContent = `${imgArray[i].name}`;
+//     trProduct.appendChild(tdName);
+
+//     var tdViews = document.createElement('td');
+//     tdViews.textContent = `${imgArray[i].viewed}`;
+//     trProduct.appendChild(tdViews);
+
+//     var tdClicked = document.createElement('td');
+//     tdClicked.textContent = `${imgArray[i].clicked}`;
+//     trProduct.appendChild(tdClicked);
+
+//     resultTable.appendChild(trProduct);
+
+
+
+//   }
+
+// }
+
+renderImages();
 
 
 
