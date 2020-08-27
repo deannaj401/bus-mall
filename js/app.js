@@ -114,7 +114,9 @@ function handleClick(e) {
 
 
 
-
+Chart.defaults.global.defaultFontFamily = "cursive";//eslint-disable-line
+Chart.defaults.global.defaultFontColor = 'rgb(30,144,255)';//eslint-disable-line
+Chart.defaults.scale.gridLines.color = 'rgb(153, 102, 255)'; //eslint-disable-line
 function renderBarChart() {
   var clicksArray = [];
   var viewedArray = [];
@@ -128,8 +130,8 @@ function renderBarChart() {
   }
 
 
-
   var chartObject = {
+
     type: 'bar',
     data: {
       labels: productArray,
@@ -242,6 +244,13 @@ function renderBarChart() {
       }]
     },
     options: {
+      title: {
+        display: true,
+        text: 'Voting Results',
+        fontFamily: 'cursive',
+        fontSize: '30',
+        fontColor: 'purple',
+      },
       scales: {
         yAxes: [{
           ticks: {
