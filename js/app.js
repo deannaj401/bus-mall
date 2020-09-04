@@ -101,6 +101,19 @@ function randomNumber(max) {
 
 }
 
+// function allSixDiff() {
+//   var randomImage = Picture.randomNumber();
+//   while (imgArray.displayed.length < 6) {
+//     if (randomImage.displayed.includes(randomImage)) {
+//       Picture.displayed.unshift(randomImage);
+//     } else
+//       randomImage = Picture.renderImage();
+
+
+//   }
+// }
+// allSixDiff();
+
 function handleClick(e) {
 
   if (clickyClick < maxRounds) {
@@ -109,15 +122,15 @@ function handleClick(e) {
         console.log(imgArray[i]);
         imgArray[i].clicked++;
         clickyClick++;
-        var stringifiedProducts = JSON.stringify(imgArray);
-        localStorage.setItem('savedProducts', stringifiedProducts);
+
       }
 
     }
     renderImages();
   }
   if (clickyClick === maxRounds) {
-
+    var stringifiedProducts = JSON.stringify(imgArray);
+    localStorage.setItem('savedProducts', stringifiedProducts);
     alert('Thank you for voting. Have a lovely Day');
     renderBarChart();
 
